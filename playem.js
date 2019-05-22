@@ -268,7 +268,7 @@ function Playem (playemPrefs) {
     function stopTrack () {
       if (progress) { clearInterval(progress) }
       for (var i in players) {
-        if (players[i].stop) { players[i].stop() } else { players[i].pause() }
+        if (players[i].stop) { players[i].stop() } else { if (players[i].pause) { players[i].pause() } }
       }
       try {
         window.soundManager.stopAll()
