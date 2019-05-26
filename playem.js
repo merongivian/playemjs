@@ -131,7 +131,7 @@ EventEmitter.prototype.emit = function (eventName) {
   var i
   var args = Array.prototype.slice.call(arguments, 1) // remove eventName from arguments, and make it an array
   var listeners = this._eventListeners[eventName]
-  for (i in listeners) { listeners[i].apply(null, args) }
+  for (i in listeners) { if (typeof i === 'string' && !i.startsWith("$")) listeners[i].apply(null, args) }
 }
 
 /**
